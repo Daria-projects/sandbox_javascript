@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Øvelse 2 - sig goddag</title>
+    <style>
+      body {
+        font-family: Syne, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sig goddag</h1>
+    <p>Åbn konsollen for at se hilsenen.</p>
+
+    <script>
+      function sigGoddag() {
+        // getHours() fra 0 til 23
+        const time = new Date().getHours();
+        let hilsen;
+
+        if (time >= 5 && time < 10) {
+          hilsen = "Godmorgen"; // kl. 5-10
+        } else if (time >= 10 && time < 18) {
+          hilsen = "Goddag"; // kl. 10-18
+        } else if (time >= 18 && time < 24) {
+          hilsen = "Godaften"; // kl. 18-24
+        } else {
+          hilsen = "Godnat"; // kl. 0-5 (24-5)
+        }
+
+        console.log(hilsen);
+      }
+
+      sigGoddag();
+    </script>
+  </body>
+</html>
