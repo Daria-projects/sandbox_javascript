@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Øvelse 1 - interaktivitet</title>
+    <style>
+      body {
+        font-family: Syne, sans-serif;
+        margin: 2rem;
+      }
+      .drikke {
+        display: grid;
+        grid-template-columns: repeat(2, 220px);
+        gap: 1rem;
+      }
+      .drikke img {
+        width: 100%;
+        height: auto;
+        border: 2px solid #333;
+        border-radius: 12px;
+        cursor: pointer;
+        background: #fff;
+      }
+      .drikke img:hover {
+        border-color: #e2582d;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hvad indholder drikken?</h1>
+    <p>Klik på en drikkevare og se resultatet</p>
+    <div class="drikke">
+      <img src="imgs/snaps.webp" alt="snaps" />
+      <img src="imgs/fanta.webp" alt="fanta" />
+      <img src="imgs/cola.webp" alt="cola" />
+      <img src="imgs/beer.webp" alt="beer" />
+    </div>
+
+    <script>
+      const billeder = document.querySelectorAll(".drikke img");
+      billeder.forEach(function (billede) {
+        billede.addEventListener("click", tjekDrikkevare);
+      });
+      function tjekDrikkevare() {
+        if (this.alt === "beer" || this.alt === "snaps") {
+          console.log("indeholder alkohol");
+        } else {
+          console.log("alkoholfri");
+        }
+      }
+    </script>
+  </body>
+</html>
