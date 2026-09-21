@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Øvelse 3 - Gæt et tal</title>
+    <style>
+      body {
+        font-family: Syne, sans-serif;
+        margin: 2rem;
+      }
+      input,
+      button {
+        font-size: 1rem;
+        padding: 0.3rem 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Gæt et tal</h1>
+    <p>Skriv et tal imellem 0 og 10</p>
+    <input type="number" id="tal" min="0" max="10" />
+    <button id="tjekKnap">Tjek tal</button>
+
+    <script>
+      let hemmeligtTal;
+      let antalForsog;
+
+      //nulstil forsøg
+      function nytSpil() {
+        hemmeligtTal = Math.floor(Math.random() * 11);
+        antalForsog = 0;
+        document.querySelector("#tal").value = "";
+      }
+
+      function tjekTal() {
+        const felt = document.querySelector("#tal");
+
+        // Tomt felt eller ugyldigt tal tæller ikke som et forsøg
+        if (felt.value === "" || isNaN(felt.value)) {
+          alert("Skriv et tal mellem 0 og 10 først :)");
+          return;
+        }
+
+        const gaet = Number(felt.value);
+        antalForsog++;
+
+        if (gaet === hemmeligtTal) {
+          const igen = confirm(`${gaet} er rigtigt! Du brugte ${antalForsog} forsøg. Prøv igen med et nyt tal? :)`);
+          if (igen) {
+            nytSpil();
+          }
+        } else if (gaet < hemmeligtTal) {
+          alert(`Øv! ${gaet} var for lavt. Prøv igen :)`);
+        } else {
+          alert(`Øv! ${gaet} var for højt. Prøv igen :)`);
+        }
+      }
+
+      document.querySelector("#tjekKnap").addEventListener("click", tjekTal);
+      nytSpil();
+    </script>
+  </body>
+</html>
